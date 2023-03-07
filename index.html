@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html>
 <head>
-  <meta name="generator" content="Hexo 6.3.0">
-  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
   <meta charset="utf-8">
   
-
-  <meta http-equiv='x-dns-prefetch-control' content='on' />
-  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
-  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
-  <link rel='dns-prefetch' href='//unpkg.com'>
-
-  <meta name="renderer" content="webkit">
-  <meta name="force-rendering" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <meta name="HandheldFriendly" content="True" >
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="theme-color" content="#f8f8f8">
   
   <title>Hexo</title>
-
-  
-    <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="https://eammont.github.io/index.html">
 <meta property="og:site_name" content="Hexo">
@@ -31,257 +14,336 @@
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  <!-- feed -->
   
+  
+<link rel="stylesheet" href="/css/style.css">
 
   
     
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
-
-  
-
-  
-
-  
-
-
-  
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://eammont.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-JAVA面试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/06/JAVA%E9%9D%A2%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2023-03-06T08:46:27.000Z" itemprop="datePublished">2023-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/06/JAVA%E9%9D%A2%E8%AF%95/">first-txt</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="JAVASE面试题"><a href="#JAVASE面试题" class="headerlink" title="JAVASE面试题"></a>JAVASE面试题</h1><h2 id="算法篇"><a href="#算法篇" class="headerlink" title="算法篇"></a>算法篇</h2><h3 id="一、查找"><a href="#一、查找" class="headerlink" title="一、查找"></a>一、查找</h3><h4 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h4><ol>
+<li><p>前提：有序数组 A</p>
+</li>
+<li><p>定义左边界L、右边界R，确定搜索范围，循环执行3、4步</p>
+</li>
+<li><p>获取中间索引 M &#x3D; （L+R）&#x2F;2</p>
+</li>
+<li><p>中间索引的值 A[M] 与待搜索的值 T 进行比较</p>
+<ul>
+<li>A[M] &#x3D; T 表示找到，返回中间索引</li>
+<li>A[M] &gt; T，中间值右侧的其他元素都大于T，无需比较，中间索引左边寻找，M - 1设置为右边界，重新查找</li>
+<li>A[M] &lt; T，中间值左侧的其他元素都小于T，无需比较，中间索引右边寻找，M + 1设置为左边界，重新查找</li>
+</ul>
+</li>
+<li><p>当 L &gt; R 时，表示没有找到，结束循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] a,<span class="type">int</span> t)</span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>,r = a.length - <span class="number">1</span>,m;</span><br><span class="line">    <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">        m = (l+r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[m]==t)&#123;</span><br><span class="line">            <span class="keyword">return</span> m;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a[m] &gt; t)&#123;</span><br><span class="line">            r = m - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            l = m + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h2><h3 id="一、自增变量"><a href="#一、自增变量" class="headerlink" title="一、自增变量"></a>一、自增变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        i = i++;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i++;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> i + ++i * i++;</span><br><span class="line">        System.out.println(<span class="string">&quot;i=&quot;</span> + i);</span><br><span class="line">        System.out.println(<span class="string">&quot;j=&quot;</span> + j);</span><br><span class="line">        System.out.println(<span class="string">&quot;k=&quot;</span> + k);</span><br><span class="line">    &#125;</span><br><span class="line">i=<span class="number">4</span>,j=<span class="number">1</span>,k=<span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="E:\typora\image\1" alt="在这里插入图片描述"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">执行 i = i++; 先将i变量压入操作数栈，然再对i变量进行自增,最后把计算结果赋值给 i , i 任然是1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="E:\typora\image\2" alt="img"></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
+<li>赋值&#x3D;，最后计算</li>
+<li>&#x3D;右边的从左到右加载值依次压入操作数栈</li>
+<li>实际先算哪个，看运算符优先级</li>
+<li>自增、自减操作都是直接修改变量的值，不经过操作数栈</li>
+<li>最后的赋值之前，临时结果也是存储在操作数栈中</li>
+</ul>
+<h3 id="二、单例模式"><a href="#二、单例模式" class="headerlink" title="二、单例模式"></a>二、单例模式</h3><h4 id="什么是单例模式？"><a href="#什么是单例模式？" class="headerlink" title="什么是单例模式？"></a>什么是单例模式？</h4><p>​		单例设计模式，即某个类在整个系统中只能有一个实例对象可被获取和使用的代码模式。</p>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><ol>
+<li>某个类只能有一个实例：构造器私有化</li>
+<li>它必须自行创建这个实例：含有一个该类的静态变量来保存这个唯一的实例</li>
+<li>它必须自行向整个系统提供这个实例：对外提供获取该实例对象的方式：(1）直接暴露（2）用静态变量的get方法获取</li>
+</ol>
+<h5 id="懒汉式：直接创建对象，不存在线程安全问题"><a href="#懒汉式：直接创建对象，不存在线程安全问题" class="headerlink" title="懒汉式：直接创建对象，不存在线程安全问题"></a>懒汉式：直接创建对象，不存在线程安全问题</h5><p>​	直接实例化饿汉式（简洁直观）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 饿汉式：</span></span><br><span class="line"><span class="comment"> *      在类初始化时直接创建实例对象，不管你是否需要对象都会创建</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * (1)构造器私有化</span></span><br><span class="line"><span class="comment"> * (2)自行创建，并且用静态变量保存</span></span><br><span class="line"><span class="comment"> * (3)向外提供这个实例</span></span><br><span class="line"><span class="comment"> * (4)强调这是一个单例，用final修饰</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HungrySingleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">HungrySingleton</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HungrySingleton</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">HungrySingleton</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>枚举式（最简洁）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> singleton.hungry;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 枚举类型：表示该类型的对象是有限的几个</span></span><br><span class="line"><span class="comment"> * 我们可以限定为一个，就成了单例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">EnumSingleton</span> &#123;</span><br><span class="line">    INSTANCE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态代码块（适合复杂实例化）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticCodeBlock</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> StaticCodeBlock INSTANCE;</span><br><span class="line">    <span class="keyword">private</span> String info;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Properties</span> <span class="variable">pro</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">            pro.load(StaticCodeBlock.class.getClassLoader().getResourceAsStream(<span class="string">&quot;singleton.properties&quot;</span>));</span><br><span class="line">            INSTANCE = <span class="keyword">new</span> <span class="title class_">StaticCodeBlock</span>(pro.getProperty(<span class="string">&quot;info&quot;</span>));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">StaticCodeBlock</span><span class="params">(String info)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.info = info;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getInfo</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setInfo</span><span class="params">(String info)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.info = info;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;StaticCodeBlock&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;info=&#x27;&quot;</span> + info + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="懒汉式：延迟创建对象"><a href="#懒汉式：延迟创建对象" class="headerlink" title="懒汉式：延迟创建对象"></a>懒汉式：延迟创建对象</h5><p>线程不安全（适用于单线程）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 懒汉式：</span></span><br><span class="line"><span class="comment"> *      延迟创建这个实例对象</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * （1）构造器私有化</span></span><br><span class="line"><span class="comment"> * （2）用一个静态变量保存这个唯一的实例</span></span><br><span class="line"><span class="comment"> * （3）提供一个静态方法，获取这个实例对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LazySingleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingleton instance;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">LazySingleton</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">LazySingleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>线程安全（使用于多线程）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 懒汉式：</span></span><br><span class="line"><span class="comment"> *      延迟创建这个实例对象</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * （1）构造器私有化</span></span><br><span class="line"><span class="comment"> * （2）用一个静态变量保存这个唯一的实例</span></span><br><span class="line"><span class="comment"> * （3）提供一个静态方法，获取这个实例对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LazySingletonSynchronized</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingletonSynchronized instance;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">LazySingletonSynchronized</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LazySingletonSynchronized <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (LazySingletonSynchronized.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">LazySingletonSynchronized</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态内部类（使用于多线程）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 在内部类被加载和初始化时，才创建INSTANCE实例对象</span></span><br><span class="line"><span class="comment"> * 静态内部类不会自动随着外部类的加载和初始化而初始化，它是单独去加载和初始化的。</span></span><br><span class="line"><span class="comment"> * 因为是在内部类加载和初始化时创建，因此线程安全</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LazySingletonInnerclass</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">LazySingletonInnerclass</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Inner</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LazySingletonInnerclass INSTANCE= <span class="keyword">new</span> <span class="title class_">LazySingletonInnerclass</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LazySingletonInnerclass <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Inner.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><p>​	如果是饿汉式，枚举形式最简单</p>
+<p>​	如果是懒汉式，静态内部类形式最简单</p>
+<h3 id="三、类初始化和实例初始化"><a href="#三、类初始化和实例初始化" class="headerlink" title="三、类初始化和实例初始化"></a>三、类初始化和实例初始化</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.classLoader;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 父类初始化&lt;clinit&gt;</span></span><br><span class="line"><span class="comment"> * 1、j = method()</span></span><br><span class="line"><span class="comment"> * 2、父类的静态代码块</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 父类实例化方法:</span></span><br><span class="line"><span class="comment"> * 1、super()（最前）</span></span><br><span class="line"><span class="comment"> * 2、i = test() (9)</span></span><br><span class="line"><span class="comment"> * 3、父类的非静态代码块 (3)</span></span><br><span class="line"><span class="comment"> * 4、父类的无参构造（最后）(2)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 非静态方法前面其实有一个默认的对象this</span></span><br><span class="line"><span class="comment"> * this在构造器或&lt;init&gt; 他表示的是正在创建的对象，因为这里 </span></span><br><span class="line"><span class="comment"> * 是正在创建Son对象，所以test()执行的就是子类重写的代码(面</span></span><br><span class="line"><span class="comment"> * 向对象多态)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 这里i=test() 执行的就是子类重写的test()方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> test();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> method();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(1)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Father() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(2)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(3)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(4)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(5)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.classLoader;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 子类的初始化&lt;clinit&gt;</span></span><br><span class="line"><span class="comment"> * 1、j = method()</span></span><br><span class="line"><span class="comment"> * 2、子类的静态代码块</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 先初始化父类 (5)(1)</span></span><br><span class="line"><span class="comment"> * 初始化子类 (10) (6)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 子类实例化方法:</span></span><br><span class="line"><span class="comment"> * 1、super()（最前）</span></span><br><span class="line"><span class="comment"> * 2、i = test() (9)</span></span><br><span class="line"><span class="comment"> * 3、子类的非静态代码块 (8)</span></span><br><span class="line"><span class="comment"> * 4、子类的无参构造（最后）(7)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 因为创建了两个Son对象，因此实例化方法&lt;init&gt;执行两次</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> test();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> method();</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(6)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Son() &#123;</span><br><span class="line">        <span class="built_in">super</span>();<span class="comment">//写或不写，在子类构造器中一定会调用父类的构造器</span></span><br><span class="line">        System.out.println(<span class="string">&quot;(7)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(8)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(9)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;(10)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Son</span> <span class="variable">son</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">        System.out.println();</span><br><span class="line">        <span class="type">Son</span> <span class="variable">son1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结果：</span></span><br><span class="line"><span class="comment">//(5)(1)(10)(6)(9)(3)(2)(9)(8)(7)</span></span><br><span class="line"><span class="comment">//(9)(3)(2)(9)(8)(7)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="类初始化过程"><a href="#类初始化过程" class="headerlink" title="类初始化过程"></a>类初始化过程</h4><ol>
+<li><p>一个类要创建实例需要先加载并初始化该类</p>
+<p>​	main方法所在的类需要先加载和初始化</p>
+</li>
+<li><p>一个子类要初始化需要先初始化父类</p>
+</li>
+<li><p>一个类初始化就是执行<clinit>()方法</p>
+<p>​	<clinit>()方法由静态类变量显示赋值代码和静态代码块组成</p>
+<p>​	类变量显示赋值代码和静态代码块代码从上到下顺序执行</p>
+<p>​	<clinit>()方法只执行一次</p>
+</li>
+</ol>
+<h4 id="实例初始化过程"><a href="#实例初始化过程" class="headerlink" title="实例初始化过程"></a>实例初始化过程</h4><p>实例初始化就是执行<inti>()方法</p>
+<ul>
+<li>​	<inti>()方法可能重载多个，有几个构造器就有几个<inti>()方法</li>
+<li><inti>()方法由非静态实例变量显示赋值代码和非静态代码块、对应构造器代码组成</li>
+<li>非静态实例变量显示赋值代码和非静态代码块代码从上到下顺序执行，而对应构造器的代码最后执行</li>
+<li>每次创建实例对象，调用对应构造器，执行的就是对应的<inti>()方法</li>
+<li><inti>()方法的首行是super()或super(实参列表)，即对应父类的<inti>()方法</li>
+</ul>
+<h4 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h4><p>1、哪些方法不可以被重写</p>
+<p>​	final方法</p>
+<p>​	静态方法</p>
+<p>​	private等子类中不可见方法</p>
+<p>2、对象的多态性</p>
+<p>​	子类如果重写了父类的方法，通过子类对象调用的一定是子类重写过的代码</p>
+<p>​	非静态方法默认的调用对象是this</p>
+<p>​	this对象在构造器或者说<init>方法中就是正在创建的对象</p>
+<h4 id="重写与重载的区别"><a href="#重写与重载的区别" class="headerlink" title="重写与重载的区别"></a>重写与重载的区别</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>发生范围</th>
+<th>方法名</th>
+<th>形参列表</th>
+<th>返回类型</th>
+<th>修饰符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>重写</td>
+<td>父子类</td>
+<td>必须一样</td>
+<td>相同</td>
+<td>子类重写的方法，返回的类型和父类返回的类型一致，或者是其子类</td>
+<td>子类方法不能缩小父类方法的访问范围</td>
+</tr>
+<tr>
+<td>重载</td>
+<td>本类</td>
+<td>必须一样</td>
+<td>类型，个数或者顺序至少有一个不同</td>
+<td>无要求</td>
+<td>无要求</td>
+</tr>
+</tbody></table>
+<h3 id="四、集合"><a href="#四、集合" class="headerlink" title="四、集合"></a>四、集合</h3><h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>1、扩容机制</p>
+<p>​	ArrayList() 会使用长度为零的数组</p>
+<p>​	ArrayList(int initialCapacity) 会使用指定容量的数组</p>
+<p>​	ArrayList(Collection&lt;? extends E&gt; c) 会使用c的大小作为数组容量</p>
+<p>​	add(Object o) 首次扩容为10，再次扩容为上次容量的1.5倍</p>
+<p>​	addAll(Collection c)没有元素时，扩容为Math.max（10，c的长度），有元素时为Math.max（原容量的1.5倍，原容量加上c的长度）</p>
+<p>2、fail-fast 与 fail-safe</p>
+<p>​	ArrayList是fail-fast的典型代表，遍历的同时不能修改，尽快失败</p>
+<p>​	CopyOnWriteArrayList 是fail-safe的典型代表，遍历的同时可以修改，原理是读写分离。</p>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><p>ArrayList 与 LinkedList</p>
+<ul>
+<li><p>ArrayList</p>
+<ol>
+<li>基于数组，需要连续内存</li>
+<li>随机访问快（指根据下标访问）</li>
+<li>尾部插入、删除性能可以，其他部分插入、删除都会移动数据，性能低</li>
+<li>可以利用 cpu 缓存</li>
+</ol>
+</li>
+<li><p>LinkedList</p>
+<ol>
+<li>基于双向链表，无需连续内存</li>
+<li>随机访问慢（要沿着链表遍历）</li>
+<li>头尾插入删除性能高</li>
+<li>占用内存多</li>
+</ol>
+</li>
+</ul>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>1、底层数据结构</p>
+<p>​	1.7：数组+链表，头插法</p>
+<p>​	1.8：数组+（链表|红黑树），尾插法</p>
+<p>2、为何要用红黑树，为何一上来不树化，树化阈值为何是8，何时会树化，何时会退化为链表?</p>
+<p>​	红黑树用来避免DoS攻击，防止链表超长时性能下降，树化应当是偶然情况</p>
+<p>​	hash 表的查找，更新的时间复杂度是0(1)，而红黑树的查找，更新的时间复杂度是0(log n),TreeNode占用空间也比普通Node的大，如非必要，尽量还是使用链表。</p>
+<p>​	hash值如果足够随机，则在hash表内按泊松分布，在负载因子0.75的情况下，长度超过8的链表出现概率是0.00000006，选择8就是为了让树化几率足够小。</p>
+<p>​	树化两个条件:链表长度超过树化阈值（8）;数组容量&gt;&#x3D;64<br>​	退化情况1:∶在扩容时如果拆分树时，树元素个数&lt;&#x3D;6则会退化链表，<br>​	退化情况2: remove树节点时，若root、root.left、root.right、root.left.left有一个为null，也会	退化为链表</p>
+<p>3、扩容：当容量大于数组容量的0.75时，2倍扩容</p>
+<p>4、索引如何计算? hashCode都有了，为何还要提供 hash() 方法?数组容量为何是2的n次幂?</p>
+<p>​	① 计算对象的hashcode()，再进行调用 HashMap 的 hash()方法进行二次哈希，最后&amp; (capacity - 1)得到索引<br>​	② 二次hash()是为了综合高位数据，让哈希分布更为均匀<br>​	③ 计算索引时，如果是2的n次幂可以使用位与运算代替取模，效率更高;扩容时 hash &amp; oldcap&#x3D;-0的元素留在原来位置，否则新位置&#x3D;旧位置+oldcap<br>​	④但①、②、③都是为了配合容量为2的n次幂时的优化手段，例如 Hashtable 的容量就不是2的n次幂，并不能说哪种设计更优，应该是设计者综合了各种因素，最终选择了使用2的n次幂作为容量</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://eammont.github.io/2023/03/06/JAVA%E9%9D%A2%E8%AF%95/" data-id="clexzs91b0000qotl52a0ehwk" data-title="first-txt" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
 
 
-  <div class='l_body' id='start'>
-    <aside class='l_left' layout=''>
+</section>
+        
+          <aside id="sidebar">
+  
     
 
   
-
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/about"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/img/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Little T</div></a></div>
-
-<nav class="menu dis-select"></nav>
-</header>
-
-
-<div class="widgets">
-<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" placeholder="Search"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
-
-<widget class="widget-wrapper recent"><div class="widget-header cap theme dis-select"><span class="name">Recent Update</span></div><div class="widget-body related-posts fs14"><a class="item title" href="/2023/03/06/JAVA%E9%9D%A2%E8%AF%95/"><span class="title">first-txt</span></a></div></widget>
-
-
-</div>
-
-
-    </aside>
-    <div class='l_main list'>
-      
-  
-
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/img/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Little T</div></a></div></header>
-
-
-
-      
-
+    
 
   
-
-<div class="nav-wrap"><nav class="sub post cap"><a class="active" href="/">Recent</a><a href="/archives">Archives</a></nav></div>
-
-  <div class="post-list post"><a class="post-card post " href="/2023/03/06/JAVA%E9%9D%A2%E8%AF%95/">
-<article class="md-text"><h2 class="post-title">first-txt</h2><div class="excerpt"><p>JAVASE面试题算法篇一、查找二分查找
-前提：有序数组 A
-
-定义左边界L、右边界R，确定搜索范围，循环执行3、4步
-
-获取中间索引 M &#x3D; （L+R）&#x2F;2
-
-中间索引的值 A[M] 与待搜索的值 T 进行比较
-
-A[M] &#x3D; T 表示找到，返回中间索引
-A[M] &gt; T，中间值右侧的其他元素都大于T，无需比较，中间索引左边寻找，M - 1设置为右边界，...</p></div><div class="meta cap"><span class="cap" id="post-meta">Posted on&nbsp;<time datetime="2023-03-06T08:46:27.000Z">2023-03-06</time></span></div></article>
-</a></div>
+    
   
-
-
-
-      
-<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
-</div></footer>
-
-      <div class='float-panel mobile-only blur' style='display:none'>
-  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
-    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
-  </button>
-</div>
-
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
     </div>
   </div>
-  <div class='scripts'>
-    <script type="text/javascript">
-  const stellar = {
-    // 懒加载 css https://github.com/filamentgroup/loadCSS
-    loadCSS: (href, before, media, attributes) => {
-      var doc = window.document;
-      var ss = doc.createElement("link");
-      var ref;
-      if (before) {
-        ref = before;
-      } else {
-        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
-        ref = refs[refs.length - 1];
-      }
-      var sheets = doc.styleSheets;
-      if (attributes) {
-        for (var attributeName in attributes) {
-          if (attributes.hasOwnProperty(attributeName)) {
-            ss.setAttribute(attributeName, attributes[attributeName]);
-          }
-        }
-      }
-      ss.rel = "stylesheet";
-      ss.href = href;
-      ss.media = "only x";
-      function ready(cb) {
-        if (doc.body) {
-          return cb();
-        }
-        setTimeout(function () {
-          ready(cb);
-        });
-      }
-      ready(function () {
-        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
-      });
-      var onloadcssdefined = function (cb) {
-        var resolvedHref = ss.href;
-        var i = sheets.length;
-        while (i--) {
-          if (sheets[i].href === resolvedHref) {
-            return cb();
-          }
-        }
-        setTimeout(function () {
-          onloadcssdefined(cb);
-        });
-      };
-      function loadCB() {
-        if (ss.addEventListener) {
-          ss.removeEventListener("load", loadCB);
-        }
-        ss.media = media || "all";
-      }
-      if (ss.addEventListener) {
-        ss.addEventListener("load", loadCB);
-      }
-      ss.onloadcssdefined = onloadcssdefined;
-      onloadcssdefined(loadCB);
-      return ss;
-    },
 
-    // 从 butterfly 和 volantis 获得灵感
-    loadScript: (src, opt) => new Promise((resolve, reject) => {
-      var script = document.createElement('script');
-      if (src.startsWith('/')){
-        src = stellar.config.root + src.substring(1);
-      }
-      script.src = src;
-      if (opt) {
-        for (let key of Object.keys(opt)) {
-          script[key] = opt[key]
-        }
-      } else {
-        // 默认异步，如果需要同步，第二个参数传入 {} 即可
-        script.async = true
-      }
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    }),
-
-    // https://github.com/jerryc127/hexo-theme-butterfly
-    jQuery: (fn) => {
-      if (typeof jQuery === 'undefined') {
-        stellar.loadScript(stellar.plugins.jQuery).then(fn)
-      } else {
-        fn()
-      }
-    }
-  };
-  stellar.version = '1.18.5';
-  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
-  stellar.config = {
-    date_suffix: {
-      just: 'Just',
-      min: 'minutes ago',
-      hour: 'hours ago',
-      day: 'days ago',
-      month: 'months ago',
-    },
-    root : '/',
-  };
-
-  // required plugins (only load if needs)
-  stellar.plugins = {
-    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
-  };
-
-  if ('local_search') {
-    stellar.search = {};
-    stellar.search.service = 'local_search';
-    if (stellar.search.service == 'local_search') {
-      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
-      stellar.search[stellar.search.service] = service_obj;
-    }
-  }
-
-  // stellar js
-  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
-
-  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
-  // optional plugins
-  if ('true' == 'true') {
-    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
-  }
-  if ('true' == 'true') {
-    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
-  }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
-  }
-  if ('true' == 'true') {
-    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
-  }
-  if ('true' == 'true') {
-    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
-  }
-  if ('false' == 'true') {
-    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
-  }
-</script>
-
-<!-- required -->
 
   
-<script src="/js/main.js" async></script>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/06/JAVA%E9%9D%A2%E8%AF%95/">first-txt</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
-<!-- optional -->
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
-<!-- inject -->
+
+<script src="/js/script.js"></script>
+
+
+
 
 
   </div>
