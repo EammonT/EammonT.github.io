@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://eammont.github.io/img/%E5%A4%9A%E7%BA%BF%E7%A8%8B-1.png">
 <meta property="og:image" content="https://eammont.github.io/2023/03/06/img/%E5%86%85%E5%AD%98-1.png">
 <meta property="article:published_time" content="2023-03-06T08:46:27.632Z">
-<meta property="article:modified_time" content="2023-03-23T12:29:50.433Z">
+<meta property="article:modified_time" content="2023-03-23T12:37:47.313Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JAVA面试">
 <meta name="twitter:card" content="summary">
@@ -438,7 +438,12 @@
 <p>出现StackOverflowError的区域</p>
 <p>​	虚拟机栈内部 - 方法调用次数过多</p>
 </li>
+<li><p>方法区与永久代、元空间之间的关系</p>
+</li>
 </ul>
+<p>​		方法区是JVM规范中定义的一块内存区域，用来存储类元数据、方法字节码、即时编译器需要的信息等</p>
+<p>​		永久代是Hotspot虚拟机对JVM规范的实现（1.8之前)</p>
+<p>​		元空间是Hotspot虚拟机对JVM规范的实现（1.8以后)，使用本地内存作为这些信息的存储空间</p>
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>License</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
