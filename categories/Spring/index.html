@@ -97,7 +97,14 @@
 <div class="nav-wrap"><nav class="sub post cap"><a href="/">Recent</a><a class="active" href="/categories">Category: Spring</a><a href="/tags">Tags</a><a href="/archives">Archives</a></nav></div>
 
   <div class="post-list post"><a class="post-card post " href="/2023/03/20/spring/">
-<article class="md-text"><h2 class="post-title">Spring</h2><div class="excerpt"><p></p></div><div class="meta cap"><span class="cap" id="post-meta">Posted on&nbsp;<time datetime="2023-03-20T05:03:50.643Z">2023-03-20</time></span><span class="cap breadcrumb">Spring</span></div></article>
+<article class="md-text"><h2 class="post-title">Spring</h2><div class="excerpt"><p>一、Spring bean生命周期阶段1:处理名称，检查缓存
+先把别名解析为实际名称，再进行后续处理
+若要FactoryBean本身，需要使用&amp;名称获取
+singletonObjects是一级缓存，放单例成品对象
+singletonFactories是三级缓存，放单例工厂
+earlySingletonObjects是二级缓存，放单例工厂的产品，可称为提前单例对象
+
+阶段2:检查父工厂...</p></div><div class="meta cap"><span class="cap" id="post-meta">Posted on&nbsp;<time datetime="2023-03-20T05:03:50.643Z">2023-03-20</time></span><span class="cap breadcrumb">Spring</span></div></article>
 </a></div>
   
 
