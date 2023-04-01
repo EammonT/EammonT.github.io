@@ -32,7 +32,7 @@
 <meta property="og:description" content="一、Spring bean生命周期阶段1:处理名称，检查缓存 先把别名解析为实际名称，再进行后续处理 若要FactoryBean本身，需要使用&amp;名称获取 singletonObjects是一级缓存，放单例成品对象 singletonFactories是三级缓存，放单例工厂 earlySingletonObjects是二级缓存，放单例工厂的产品，可称为提前单例对象  阶段2:检查父工厂 父子">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-20T05:03:50.643Z">
-<meta property="article:modified_time" content="2023-03-27T10:48:56.316Z">
+<meta property="article:modified_time" content="2023-04-01T09:42:38.954Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -80,7 +80,7 @@
 <widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
 
 
-<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Spring</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Spring-bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">一、Spring bean生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B51-%E5%A4%84%E7%90%86%E5%90%8D%E7%A7%B0%EF%BC%8C%E6%A3%80%E6%9F%A5%E7%BC%93%E5%AD%98"><span class="toc-text">阶段1:处理名称，检查缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B52-%E6%A3%80%E6%9F%A5%E7%88%B6%E5%B7%A5%E5%8E%82"><span class="toc-text">阶段2:检查父工厂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B53%EF%B8%B0%E6%A3%80%E6%9F%A5DependsOn"><span class="toc-text">阶段3︰检查DependsOn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B54-%E6%8C%89Scope%E5%88%9B%E5%BB%BAbean"><span class="toc-text">阶段4:按Scope创建bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B55-%E5%88%9B%E5%BB%BAbean"><span class="toc-text">阶段5:创建bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B56-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">阶段6:类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B57%EF%B8%B0%E9%94%80%E6%AF%81bean"><span class="toc-text">阶段7︰销毁bean</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Spring%E4%BA%8B%E7%89%A9%E5%A4%B1%E6%95%88%E7%9A%84%E5%87%A0%E7%A7%8D%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%8E%9F%E5%9B%A0"><span class="toc-text">二、Spring事物失效的几种场景及原因</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Spring</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Spring-bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">一、Spring bean生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B51-%E5%A4%84%E7%90%86%E5%90%8D%E7%A7%B0%EF%BC%8C%E6%A3%80%E6%9F%A5%E7%BC%93%E5%AD%98"><span class="toc-text">阶段1:处理名称，检查缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B52-%E6%A3%80%E6%9F%A5%E7%88%B6%E5%B7%A5%E5%8E%82"><span class="toc-text">阶段2:检查父工厂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B53%EF%B8%B0%E6%A3%80%E6%9F%A5DependsOn"><span class="toc-text">阶段3︰检查DependsOn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B54-%E6%8C%89Scope%E5%88%9B%E5%BB%BAbean"><span class="toc-text">阶段4:按Scope创建bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B55-%E5%88%9B%E5%BB%BAbean"><span class="toc-text">阶段5:创建bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B56-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">阶段6:类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B57%EF%B8%B0%E9%94%80%E6%AF%81bean"><span class="toc-text">阶段7︰销毁bean</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Spring%E4%BA%8B%E7%89%A9%E5%A4%B1%E6%95%88%E7%9A%84%E5%87%A0%E7%A7%8D%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%8E%9F%E5%9B%A0"><span class="toc-text">二、Spring事物失效的几种场景及原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Spring%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">三、Spring的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Spring%E4%B8%AD%E7%9A%84Singleton-Bean%E6%98%AF%E5%90%A6%E6%98%AF%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">1.Spring中的Singleton Bean是否是单例模式?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Spring%E4%B8%AD%E7%9A%84-Builder"><span class="toc-text">2.Spring中的 Builder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Spring%E4%B8%AD%E7%9A%84Factory-Method"><span class="toc-text">3.Spring中的Factory Method</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Spring-%E4%B8%AD%E7%9A%84Adapter"><span class="toc-text">4.Spring 中的Adapter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Spring%E4%B8%AD%E7%9A%84Composite"><span class="toc-text">5.Spring中的Composite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Spring%E4%B8%AD%E7%9A%84Decorator"><span class="toc-text">6.Spring中的Decorator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Spring%E4%B8%AD%E7%9A%84Proxy"><span class="toc-text">7.Spring中的Proxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Spring%E4%B8%ADChain-of-Responsibility"><span class="toc-text">8.Spring中Chain of Responsibility</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Spring%E4%B8%AD%E7%9A%84Observer"><span class="toc-text">9.Spring中的Observer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-Spring-%E4%B8%AD%E7%9A%84Strategy"><span class="toc-text">10.Spring 中的Strategy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Spring%E4%B8%AD%E7%9A%84Template-Method"><span class="toc-text">11.Spring中的Template Method</span></a></li></ol></li></ol></div></div></widget>
 
 
 
@@ -155,7 +155,9 @@
 <p>原因: Spring默认只会回滚非检查异常</p>
 <p>解法:配置rollbackFor属性</p>
 <ol start="2">
-<li>业务方法内自己try-catch异常导致事务不能正确回滚<br> 原因:事务通知只有捉到了目标抛出的异常，才能进行后续的回滚处理，如果目标自己处理掉异常，事务通知无法知悉</li>
+<li><p>业务方法内自己try-catch异常导致事务不能正确回滚</p>
+<p>  原因:事务通知只有捉到了目标抛出的异常，才能进行后续的回滚处理，如果目标自己处理掉异常，事务通知无法知悉</p>
+</li>
 </ol>
 <p> 解法1:异常原样抛出<br> 解法2:手动设置TransactionStatus.setRollbackOnly()</p>
 <ol start="3">
@@ -179,6 +181,97 @@
 <p>解法1: synchronized范围应扩大至代理方法调用<br>解法2:使用select … for update替换select</p>
 </li>
 </ol>
+<h3 id="三、Spring的设计模式"><a href="#三、Spring的设计模式" class="headerlink" title="三、Spring的设计模式"></a>三、Spring的设计模式</h3><h4 id="1-Spring中的Singleton-Bean是否是单例模式"><a href="#1-Spring中的Singleton-Bean是否是单例模式" class="headerlink" title="1.Spring中的Singleton Bean是否是单例模式?"></a>1.Spring中的Singleton Bean是否是单例模式?</h4><p>请大家区分singleton pattern 与Spring 中的 singleton bean</p>
+<ul>
+<li>根据单例模式的目的 Ensure a class only has one instance, and provide a global point of access to it</li>
+<li>显然Spring 中的 singleton bean并非实现了单例模式，singleton bean 只能保证每个容器内，相同id的bean单实例</li>
+<li>当然Spring 中也用到了单例模式，例如<ul>
+<li>org.springframework.transaction.TransactionDefinition#withDefaults</li>
+<li>org.springframework.aop.TruePointcut#fINSTANCE</li>
+<li>org.springframework.aop.interceptor.ExposelnvocationInterceptor#ADVISOR</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-Spring中的-Builder"><a href="#2-Spring中的-Builder" class="headerlink" title="2.Spring中的 Builder"></a>2.Spring中的 Builder</h4><p>​	Separate the construction of a complex object from its representation so that the same construction process can create different representations</p>
+<p>它的主要亮点有三处:<br>1．较为灵活的构建产品对象<br>2．在不执行最后build方法前，产品对象都不可用</p>
+<p>3.构建过程采用链式调用，看起来比较爽<br>Spring中体现Builder模式的地方:</p>
+<ul>
+<li>org.springframework.beans.factory.support.BeanDefinitionBuilder</li>
+<li>org.springframework.web.util.UriComponentsBuilder</li>
+<li>org.springframework.http.ResponseEntity.HeadersBuilder</li>
+<li>org.springframework.http.ResponseEntity.BodyBuilder</li>
+</ul>
+<h4 id="3-Spring中的Factory-Method"><a href="#3-Spring中的Factory-Method" class="headerlink" title="3.Spring中的Factory Method"></a>3.Spring中的Factory Method</h4><p>​	Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Methodlets a class defer instantiation to subclasses</p>
+<p>根据上面的定义，Spring中的ApplicationContext与BeanFactory 中的getBean都可以视为工厂方法，它隐藏了bean(产品）的创建过程和具体实现<br>Spring 中其它工厂:</p>
+<ul>
+<li>org.springframework.beans.factory.FactoryBean</li>
+<li>@Bean标注的静态方法及实例方法</li>
+<li>ObjectFactory 及 ObjectProvider</li>
+</ul>
+<p>前两种工厂主要封装第三方的 bean的创建过程，后两种工厂可以推迟 bean创建，解决循环依赖及单例注入多例等问题</p>
+<h4 id="4-Spring-中的Adapter"><a href="#4-Spring-中的Adapter" class="headerlink" title="4.Spring 中的Adapter"></a>4.Spring 中的Adapter</h4><p>​	Convert the interface of a class into another interface clients expect.Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces</p>
+<p>典型的实现有两处:</p>
+<ul>
+<li>org.springframework.web.servlet.HandlerAdapter -因为控制器实现有各种各样，比如有大家熟悉的<ul>
+<li>@RequestMapping标注的控制器实现</li>
+<li>传统的基于Controller接口(不是@Controller注解啊）的实现</li>
+<li>较新的基于RouterFunction接口的实现</li>
+<li>它们的处理方法都不一样，为了统一调用，必须适配为HandlerAdapter接口</li>
+</ul>
+</li>
+<li>org.springframework.beans.factory.support.DisposableBeanAdapter -因为销毁方法多种多样，因此都要适配为DisposableBean来统一调用销毁方法</li>
+</ul>
+<h4 id="5-Spring中的Composite"><a href="#5-Spring中的Composite" class="headerlink" title="5.Spring中的Composite"></a>5.Spring中的Composite</h4><p>​	Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treatindividual objects and compositions of objects uniformly</p>
+<p>典型实现有:</p>
+<ul>
+<li>org.springframework.web.method.support.HandlerMethodArgumentResolverComposite</li>
+<li>org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite</li>
+<li>org.springframework.web.servlet.handler.HandlerExceptionResolverComposite</li>
+<li>org.springframework.web.servlet.view.ViewResolverComposite</li>
+</ul>
+<p>composite对象的作用是，将分散的调用集中起来，统一调用入口，它的特征是，与具体干活的实现实现同一个接口，当调用composite对象的接口方法时，其实是委托具体干活的实现来完成</p>
+<h4 id="6-Spring中的Decorator"><a href="#6-Spring中的Decorator" class="headerlink" title="6.Spring中的Decorator"></a>6.Spring中的Decorator</h4><p>Attach additional responsibilities to an object dynamically.Decorators provide a flexible alternative tosubclassing for extending functionality<br>典型实现</p>
+<ul>
+<li>org.springframework.web.util.ContentCachingRequestWrappe</li>
+</ul>
+<h4 id="7-Spring中的Proxy"><a href="#7-Spring中的Proxy" class="headerlink" title="7.Spring中的Proxy"></a>7.Spring中的Proxy</h4><p>Provide a surrogate or placeholder for another object to control access to it<br>装饰器模式注重的是功能增强，避免子类继承方式进行功能扩展，而代理模式更注重控制目标的访问<br>典型实现:</p>
+<ul>
+<li>org.springframework.aop.framework.JdkDynamicAopProxy.</li>
+<li>org.springframework.aop.framework.ObjenesisCglibAopProxy</li>
+</ul>
+<h4 id="8-Spring中Chain-of-Responsibility"><a href="#8-Spring中Chain-of-Responsibility" class="headerlink" title="8.Spring中Chain of Responsibility"></a>8.Spring中Chain of Responsibility</h4><p>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle threquest.Chain the receiving objects and pass the request along the chain until an object handles it<br>典型实现</p>
+<ul>
+<li>org.springframework.web.servlet.Handlerlnterceptor</li>
+</ul>
+<h4 id="9-Spring中的Observer"><a href="#9-Spring中的Observer" class="headerlink" title="9.Spring中的Observer"></a>9.Spring中的Observer</h4><p>Define a one-to-many dependency between objects so that when one object changes state, all its dependentsare notified and updated automatically<br>典型实现:</p>
+<ul>
+<li>org.springframework.context.ApplicationListener</li>
+<li>org.springframework.context.event.ApplicationEventMulticaster</li>
+<li>org.springframework.context.ApplicationEvent</li>
+</ul>
+<h4 id="10-Spring-中的Strategy"><a href="#10-Spring-中的Strategy" class="headerlink" title="10.Spring 中的Strategy"></a>10.Spring 中的Strategy</h4><p>Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets thealgorithm vary independently from clients that use it<br>典型实现</p>
+<ul>
+<li>org.springframework.beans.factory.support.InstantiationStrategy</li>
+<li>org.springframework.core.annotation.MergedAnnotations.SearchStrategy</li>
+<li>org.springframework.boot.autoconfigure.condition.SearchStrategy</li>
+</ul>
+<h4 id="11-Spring中的Template-Method"><a href="#11-Spring中的Template-Method" class="headerlink" title="11.Spring中的Template Method"></a>11.Spring中的Template Method</h4><p>Define the skeleton of an algorithm ini an operation, deferring some steps to subclasses. Template Method letssubclasses redefine certain steps of an algorithm without changing<br>the algorithm’s structure<br>典型实现</p>
+<ul>
+<li><p>大部分以Template命名的类，如JdbcTemplate,TransactionTemplate</p>
+</li>
+<li><p>很多以Abstract命名的类，如AbstractApplicationContext</p>
+</li>
+<li><p>最基本的切面是Advisor，一个Aspect切面对应一到多个Advisor</p>
+</li>
+<li><p>最基本的Advice是MethodInterceptor，其它Advice最终都将适配为MethodInterceptor创建代理的方式</p>
+</li>
+<li><p>实现了用户自定义接口，采用jdk动态代理没有实现用户自定义接口，采用cglib 代理</p>
+</li>
+<li><p>设置了setProxyTargetClass(true)，统一采用cglib 代理切面、切点、通知等不会被代理</p>
+</li>
+<li><p>AnnotationAwareAspectJAutoProxyCreator调用时机:创建阶段、依赖注入阶段、初始化阶段</p>
+</li>
+</ul>
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>License</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>

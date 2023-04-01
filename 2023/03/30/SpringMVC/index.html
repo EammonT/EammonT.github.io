@@ -24,13 +24,15 @@
   <title>SpringMVC - Hexo</title>
 
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="SpringMVC一、SpringMVC执行流程初始化阶段: 在 Web容器第一次用到DispatcherServlet的时候，会创建其对象并执行init方法 init方法内会创建Spring Web容器，并调用容器refresh方法 refresh过程中会创建并初始化SpringMVC中的重要组件，例如MultipartResolver、HandlerMapping,HandlerAdapter">
+<meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC">
 <meta property="og:url" content="https://eammont.github.io/2023/03/30/SpringMVC/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SpringMVC一、SpringMVC执行流程初始化阶段: 在 Web容器第一次用到DispatcherServlet的时候，会创建其对象并执行init方法 init方法内会创建Spring Web容器，并调用容器refresh方法 refresh过程中会创建并初始化SpringMVC中的重要组件，例如MultipartResolver、HandlerMapping,HandlerAdapter">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-30T10:31:50.262Z">
-<meta property="article:modified_time" content="2023-03-30T10:32:46.424Z">
+<meta property="article:modified_time" content="2023-03-30T11:06:56.290Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="SpringMVC">
 <meta name="twitter:card" content="summary">
@@ -74,11 +76,20 @@
 </header>
 
 
-<div class="widgets"></div>
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">SpringMVC</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81SpringMVC%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">一、SpringMVC执行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-text">初始化阶段:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E9%98%B6%E6%AE%B5"><span class="toc-text">匹配阶段:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5"><span class="toc-text">执行阶段:</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
 
 
     </aside>
-    <div class='l_main list'>
+    <div class='l_main'>
       
 
       
@@ -89,6 +100,46 @@
 
 <article class='md-text content post'>
 <h1 class="article-title"><span>SpringMVC</span></h1>
+<h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><h3 id="一、SpringMVC执行流程"><a href="#一、SpringMVC执行流程" class="headerlink" title="一、SpringMVC执行流程"></a>一、SpringMVC执行流程</h3><h4 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段:"></a>初始化阶段:</h4><ol>
+<li>在 Web容器第一次用到DispatcherServlet的时候，会创建其对象并执行init方法</li>
+<li>init方法内会创建Spring Web容器，并调用容器<br>refresh方法</li>
+<li>refresh过程中会创建并初始化SpringMVC中的重要组<br>件，例如MultipartResolver、HandlerMapping,HandlerAdapter，HandlerExceptionResolver、ViewResolver等</li>
+<li>容器初始化后，会将上—步初始化好的重要组件，赋值给<br>DispatcherServlet的成员变量，留待后用</li>
+</ol>
+<h4 id="匹配阶段"><a href="#匹配阶段" class="headerlink" title="匹配阶段:"></a>匹配阶段:</h4><ol>
+<li><p>用户发送的请求统一到达前端控制器 DispatcherServlet</p>
+</li>
+<li><p>DispatcherServlet遍历所有HandlerMapping，找到与路径匹配的处理器</p>
+<p>HandlerMapping有多个，每个HandlerMapping会返回不同的处理器对象，谁先匹配，返回谁的处理器。其中能识@RequestMapping 的优先级最高心</p>
+<p>对应@RequestMapping的处理器是HandlerMethod，它包含了控制器对象和控制器方法信息</p>
+<p>其中路径与处理器的映射关系在HandlerMapping初始化时就会建立好</p>
+</li>
+<li><p>将HandlerMethod连同匹配到的拦截器，生成调用链对象HandlerExecutionChain返回</p>
+</li>
+<li><p>遍历HandlerAdapter处理器适配器，找到能处理HandlerMethod的适配器对象，开始调用</p>
+</li>
+</ol>
+<h4 id="执行阶段"><a href="#执行阶段" class="headerlink" title="执行阶段:"></a>执行阶段:</h4><ol>
+<li><p>执行拦截器preHandle</p>
+</li>
+<li><p>由HandlerAdapter 调用HandlerMethod</p>
+<p>调用前处理不同类型的参数</p>
+<p>调用后处理不同类型的返回值</p>
+</li>
+<li><p>第⒉步没有异常</p>
+</li>
+</ol>
+<p>​		返回ModelAndView</p>
+<p>​		执行拦截器postHandle方法</p>
+<p>​		解析视图，得到View对象，进行视图渲染</p>
+<ol start="4">
+<li><p>第⒉步有异常，进入HandlerExceptionResolver异常处理流程</p>
+</li>
+<li><p>最后都会执行拦截器的afterCompletion方法</p>
+</li>
+<li><p>如果控制器方法标注了@ResponseBody 注解，则在第2步，就会生成json结果，并标记ModelAndView已处理，这样就不会执行第3步的视图渲染</p>
+</li>
+</ol>
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>License</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -96,7 +147,7 @@
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2023/03/20/Spring/">Spring</a></div></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2023/03/31/SpringBoot/">SpringBoot</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2023/03/20/Spring/">Spring</a></div></section></div>
 
 
 
