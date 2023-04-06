@@ -21,18 +21,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>Hexo</title>
+  <title>Redis - Hexo</title>
 
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+    <meta name="description" content="Redis一、Redis单线程与多线程Redis 6.0版本之前的单线程指的是其网络l&#x2F;O和键值对读写是由一个线程完成的Redis6.0引入的多线程指的是网络请求过程采用了多线程，而键值对读写命令仍然是单线程处理的，所以Redis依然是并发安全的也就是只有网络请求模块和数据操作模块是单线程的，而其它的持久化、集群数据同步等，其实是由额外的线程执行的 二、Redis快的原因1、命令执行基于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
 <meta property="og:url" content="https://eammont.github.io/2023/04/06/Redis/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Redis一、Redis单线程与多线程Redis 6.0版本之前的单线程指的是其网络l&#x2F;O和键值对读写是由一个线程完成的Redis6.0引入的多线程指的是网络请求过程采用了多线程，而键值对读写命令仍然是单线程处理的，所以Redis依然是并发安全的也就是只有网络请求模块和数据操作模块是单线程的，而其它的持久化、集群数据同步等，其实是由额外的线程执行的 二、Redis快的原因1、命令执行基于">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://eammont.github.io/img/appendonly.png">
 <meta property="article:published_time" content="2023-04-06T04:55:05.361Z">
-<meta property="article:modified_time" content="2023-04-06T04:55:05.361Z">
+<meta property="article:modified_time" content="2023-04-06T07:17:36.433Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://eammont.github.io/img/appendonly.png">
   
   
 
@@ -73,21 +78,165 @@
 </header>
 
 
-<div class="widgets"></div>
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Redis</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Redis%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">一、Redis单线程与多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Redis%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">二、Redis快的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Redis%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AD%98%E5%82%A8%E7%9A%84"><span class="toc-text">三、Redis底层数据是如何用跳表来存储的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Redis-Key%E8%BF%87%E6%9C%9F%E4%BA%86%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E5%AD%98%E6%B2%A1%E9%87%8A%E6%94%BE"><span class="toc-text">四、Redis Key过期了为什么内存没释放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81Redis-Key%E6%B2%A1%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A2%ABRedis%E4%B8%BB%E5%8A%A8%E5%88%A0%E9%99%A4%E4%BA%86"><span class="toc-text">五、Redis Key没设置过期时间为什么被Redis主动删除了</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BD%93Redis%E5%B7%B2%E7%94%A8%E5%86%85%E5%AD%98%E8%B6%85%E8%BF%87maxmemory%E9%99%90%E5%AE%9A%E6%97%B6%EF%BC%8C%E8%A7%A6%E5%8F%91%E4%B8%BB%E5%8A%A8%E6%B8%85%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-text">当Redis已用内存超过maxmemory限定时，触发主动清理策略</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Redis%E6%B7%98%E6%B1%B0Key%E7%9A%84%E7%AE%97%E6%B3%95LRU%E4%B8%8ELFU%E5%8C%BA%E5%88%AB"><span class="toc-text">Redis淘汰Key的算法LRU与LFU区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81Redis%E4%B8%BB%E4%BB%8E%E3%80%81%E5%93%A8%E5%85%B5%E3%80%81%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%AF%94%E8%BE%83"><span class="toc-text">六、Redis主从、哨兵、集群架构优缺点比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81Redis%E9%9B%86%E7%BE%A4%E6%95%B0%E6%8D%AEhash%E5%88%86%E7%89%87%E7%AE%97%E6%B3%95"><span class="toc-text">七、Redis集群数据hash分片算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A7%BD%E4%BD%8D%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95"><span class="toc-text">槽位定位算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81Redis%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%9C%89%E6%AD%BB%E5%BE%AA%E7%8E%AF%E9%98%BB%E5%A1%9EBug"><span class="toc-text">八、Redis执行命令有死循环阻塞Bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%EF%BC%8CRedis%E4%B8%BB%E4%BB%8E%E5%88%87%E6%8D%A2%E5%AF%BC%E8%87%B4%E4%BA%86%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-text">九、一次线上事故，Redis主从切换导致了缓存雪崩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E3%80%81Redis%E6%8C%81%E4%B9%85%E5%8C%96RDB%E3%80%81AOF%E3%80%81%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">十、Redis持久化RDB、AOF、混合持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB%E5%BF%AB%E7%85%A7-snapshot"><span class="toc-text">RDB快照(snapshot)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bgsave%E7%9A%84%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6-cOW-%E6%9C%BA%E5%88%B6"><span class="toc-text">bgsave的写时复制(cOW)机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#save%E4%B8%8Ebgsave%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-text">save与bgsave对比：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOF-append-only-file"><span class="toc-text">AOF (append-only file)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AOF%E9%87%8D%E5%86%99"><span class="toc-text">AOF重写</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-4-0%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">Redis 4.0混合持久化</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
 
 
     </aside>
-    <div class='l_main list'>
+    <div class='l_main'>
       
 
       
 
 
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2023-04-06T04:55:05.361Z">2023-04-06</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Redis/">Redis</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2023-04-06T04:55:05.361Z">2023-04-06</time></div></div>
 
 <article class='md-text content post'>
+<h1 class="article-title"><span>Redis</span></h1>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h3 id="一、Redis单线程与多线程"><a href="#一、Redis单线程与多线程" class="headerlink" title="一、Redis单线程与多线程"></a>一、Redis单线程与多线程</h3><p>Redis 6.0版本之前的单线程指的是其网络l&#x2F;O和键值对读写是由一个线程完成的<br>Redis6.0引入的多线程指的是网络请求过程采用了多线程，而键值对读写命令仍然是单线程处理的，所以Redis依然是并发安全的<br>也就是只有网络请求模块和数据操作模块是单线程的，而其它的持久化、集群数据同步等，其实是由额外的线程执行的</p>
+<h3 id="二、Redis快的原因"><a href="#二、Redis快的原因" class="headerlink" title="二、Redis快的原因"></a>二、Redis快的原因</h3><p>1、命令执行基于内存操作，一条命令在内存里操作的时间是几十纳秒</p>
+<p>2、命令执行是单线程操作，没有线程切换开销<br>3、基于IO多路复用机制提升Redis的I&#x2F;O利用率<br>4、高效的数据存储结构:全局hash表以及多种高效数据结构，比如:跳表，压缩列表，链表等等</p>
+<h3 id="三、Redis底层数据是如何用跳表来存储的"><a href="#三、Redis底层数据是如何用跳表来存储的" class="headerlink" title="三、Redis底层数据是如何用跳表来存储的"></a>三、Redis底层数据是如何用跳表来存储的</h3><p>跳表：将有序链表改造为支持近似”折半查找”算法，可以进行快速的插入、删除、查找操作</p>
+<h3 id="四、Redis-Key过期了为什么内存没释放"><a href="#四、Redis-Key过期了为什么内存没释放" class="headerlink" title="四、Redis Key过期了为什么内存没释放"></a>四、Redis Key过期了为什么内存没释放</h3><p>导致这个问题的原因在于:SET命令如果不设置过期时间，那么Redis会自动擦除这个key的过期时间<br>如果你发现Redis 的内存持续增长，而且很多key原来设置了过期时间，后来发现过期时间丢失了，很有可能是因为这个原因导致的。<br>这时你的 Redis中就会存在大量不过期的key，消耗过多的内存资源<br>所以，你在使用SET命令时，如果刚开始就设置了过期时间，那么之后修改这个key，也务必要加上过期时间的参数，避免过期时间丢失问题</p>
+<p>Redis对于过期key的处理一般有惰性删除和定时删除两种策略<br>1、惰性删除:当读&#x2F;写一个已经过期的key时，会触发惰性删除策略，判断key是否过期，如果过期了直接删除掉这个key</p>
+<p>2、定时删除:由于惰性删除策略无法保证冷数据被及时删掉，所以Redis会定期(默认每100ms)主动淘汰一批已过期的key,这里的一批只是部分过期key，所以可能会出现部分key已经过期但还没有被清理掉的情况，导致内存并没有被释放</p>
+<h3 id="五、Redis-Key没设置过期时间为什么被Redis主动删除了"><a href="#五、Redis-Key没设置过期时间为什么被Redis主动删除了" class="headerlink" title="五、Redis Key没设置过期时间为什么被Redis主动删除了"></a>五、Redis Key没设置过期时间为什么被Redis主动删除了</h3><h5 id="当Redis已用内存超过maxmemory限定时，触发主动清理策略"><a href="#当Redis已用内存超过maxmemory限定时，触发主动清理策略" class="headerlink" title="当Redis已用内存超过maxmemory限定时，触发主动清理策略"></a>当Redis已用内存超过maxmemory限定时，触发主动清理策略</h5><p>主动清理策略在Redis 4.0之前一共实现了6种内存淘汰策略，在4.0之后，又增加了2种策略，总共8种:</p>
+<p>a)针对设置了过期时间的key做处理:</p>
+<ol>
+<li><p>volatile-ttl：在筛选时，会针对设置了过期时间的键值对，根据过期时间的先后进行删除，越早过期的越先被删除。</p>
+</li>
+<li><p>volatile-random：就像它的名称一样，在设置了过期时间的键值对中，进行随机删除。</p>
+</li>
+<li><p>volatile-Iru：会使用LRU算法筛选设置了过期时间的键值对删除。</p>
+</li>
+<li><p>volatile-lfu：会使用LFU算法筛选设置了过期时间的键值对删除。</p>
+</li>
+</ol>
+<p>b)针对所有的key做处理:</p>
+<ol start="5">
+<li>allkeys-random:从所有键值对中随机选择并删除数据。</li>
+<li>allkeys-Iru:使用LRU算法在所有数据中进行筛选删除。</li>
+<li>allkeys-lfu:使用LFU算法在所有数据中进行筛选删除。</li>
+</ol>
+<p>c)不处理:</p>
+<ol start="8">
+<li>noeviction:不会剔除任何数据，拒绝所有写入操作并返回客户端错误信息”(error)OOM command not allowed whenused memory”，此时Redis只响应读操作。</li>
+</ol>
+<h5 id="Redis淘汰Key的算法LRU与LFU区别"><a href="#Redis淘汰Key的算法LRU与LFU区别" class="headerlink" title="Redis淘汰Key的算法LRU与LFU区别"></a>Redis淘汰Key的算法LRU与LFU区别</h5><p>LRU算法(Least Recently Used，最近最少使用):淘汰很久没被访问过的数据，以最近一次访问时间作为参考</p>
+<p>LFU算法(Least Frequently Used，最不经常使用):淘汰最近一段时间被访问次数最少的数据，以次数作为参考绝大多数情况我们都可以用LRU策略，当存在大量的热点缓存数据时，LFU可能更好点</p>
+<h3 id="六、Redis主从、哨兵、集群架构优缺点比较"><a href="#六、Redis主从、哨兵、集群架构优缺点比较" class="headerlink" title="六、Redis主从、哨兵、集群架构优缺点比较"></a>六、Redis主从、哨兵、集群架构优缺点比较</h3><p>在redis3.0以前的版本要实现集群一般是借助哨兵sentinel工具来监控master节点的状态，如果master节点异常，则会做主从切换，将某一台slave作为master，哨兵的配置略微复杂，并且性能和高可用性等各方面表现一般，特别是在主从切换的瞬间存在访问瞬断的情况，而且哨兵模式只有一个主节点对外提供服务，没法支持很高的并发，且单个主节点内存也不宜设置得过大，否则会导致持久化文件过大，影响数据恢复或主从同步的效率</p>
+<p>redis集群是一个由多个主从节点群组成的分布式服务器群，它具有复制、高可用和分片特性。Redis集群不需要sentinel哨兵·也能完成节点移除和故障转移的功能。需要将每个节点设置成集群模式，这种集群模式没有中心节点，可水平扩展，据官方文档称可以线性扩展到上万个节点(官方推荐不超过1000个节点)。redis集群的性能和高可用性均优于之前版本的哨兵模式，且集群配置非常简单。</p>
+<h3 id="七、Redis集群数据hash分片算法"><a href="#七、Redis集群数据hash分片算法" class="headerlink" title="七、Redis集群数据hash分片算法"></a>七、Redis集群数据hash分片算法</h3><p>Redis Cluster将所有数据划分为16384个 slots(槽位)，每个节点负责其中一部分槽位。槽位的信息存储于每个节点中。<br>当Redis Cluster的客户端来连接集群时，它也会得到一份集群的槽位配置信息并将其缓存在客户端本地。这样当客户端要查找某个key时，可以根据槽位定位算法定位到目标节点。</p>
+<h5 id="槽位定位算法"><a href="#槽位定位算法" class="headerlink" title="槽位定位算法"></a>槽位定位算法</h5><p>Cluster默认会对 key值使用crc16算法进行 hash得到一个整数值，然后用这个整数值对16384进行取模来得到具体槽位。<br>HASH_SLOT &#x3D; CRC16(key) mod 16384<br>再根据槽位值和Redis节点的对应关系就可以定位到key具体是落在哪个Redis节点上的。</p>
+<h3 id="八、Redis执行命令有死循环阻塞Bug"><a href="#八、Redis执行命令有死循环阻塞Bug" class="headerlink" title="八、Redis执行命令有死循环阻塞Bug"></a>八、Redis执行命令有死循环阻塞Bug</h3><p>RANDOMKEY在随机拿出一个 key后，首先会先检查这个key是否已过期，如果该key已经过期，那么Redis 会删除它，这个过程就是惰性删除。但清理完了还不能结束，Redis还要找出一个没过期的 key，返回给客户端。<br>此时，Redis则会继续随机拿出一个key，然后再判断它是否过期，直到找出一个没过期的key返回给客户端。</p>
+<p>这里就有一个问题了，如果此时Redis 中，有大量key已经过期，但还未来得及被清理掉，那这个循环就会持续很久才能结束，而且，这个耗时都花费在了清理过期key以及寻找不过期 key 上，导致的结果就是，RANDOMKEY 执行耗时变长，影响Redis性能。<br>以上流程，其实是在master 上执行的。<br>如果在slave 上执行RANDOMEKY，那么问题会更严重。<br>slave自己是不会清理过期key，当一个key要过期时，master 会先清理删除它，之后master向slave发送一个DEL命令，告知slave 也删除这个key，以此达到主从库的数据一致性。<br>假设Redis 中存在大量已过期还未被清理的 key，那在 slave上执行RANDOMKEY时，就会发生以下问题:<br>1、slave随机取出一个key，判断是否已过期。<br>2、key 已过期，但slave不会删除它，而是继续随机寻找不过期的key。<br>3、由于大量key都已过期，那 slave就会寻找不到符合条件的 key，此时就会陷入死循环。<br>也就是说，在slave 上执行RANDOMKEY，有可能会造成整个Redis 实例卡死。<br>这其实是Redis 的一个Bug，这个 Bug一直持续到5.0才被修复，修复的解决方案就是在slave中最多找一定的次数，无论是否能找到，都会退出循环。</p>
+<h3 id="九、一次线上事故，Redis主从切换导致了缓存雪崩"><a href="#九、一次线上事故，Redis主从切换导致了缓存雪崩" class="headerlink" title="九、一次线上事故，Redis主从切换导致了缓存雪崩"></a>九、一次线上事故，Redis主从切换导致了缓存雪崩</h3><p>我们假设，slave的机器时钟比 master走得快很多。<br>此时，Redis master里设置了过期时间的key，从 slave角度来看，可能会有很多在master里没过期的数据其实已经过期了。<br>如果此时操作主从切换，把slave提升为新的master。<br>它成为master后，就会开始大量清理过期key，此时就会导致以下结果:</p>
+<ol>
+<li>master大量清理过期key，主线程可能会发生阻塞，无法及时处理客户端请求。</li>
+<li>Redis 中数据大量过期，引发缓存雪崩。</li>
+</ol>
+<p>当master与slave机器时钟严重不一致时，对业务的影响非常大。所以，我们一定要保证主从库的机器时钟一致性，避免发生这些问题。</p>
+<h3 id="十、Redis持久化RDB、AOF、混合持久化"><a href="#十、Redis持久化RDB、AOF、混合持久化" class="headerlink" title="十、Redis持久化RDB、AOF、混合持久化"></a>十、Redis持久化RDB、AOF、混合持久化</h3><h4 id="RDB快照-snapshot"><a href="#RDB快照-snapshot" class="headerlink" title="RDB快照(snapshot)"></a>RDB快照(snapshot)</h4><p>在默认情况下，Redis 将内存数据库快照保存在名字为dump.rdb的二进制文件中。<br>你可以对Redis进行设置，让它在”N秒内数据集至少有M个改动”这一条件被满足时，自动保存一次数据集。</p>
+<p>比如说，以下设置会让Redis在满足” 60秒内有至少有1000个键被改动”这一条件时，自动保存一次数据集:</p>
+<p> #save 60 1000  &#x2F;&#x2F;关闭RDB只需要将所有的save保存策略注释掉即可</p>
+<p>还可以手动执行命令生成RDB快照，进入redis客户端执行命令save或bgsave可以生成dump.rdb文件，每次命令执行都会将所有redis内存快照到一个新的rdb文件里，并覆盖原有rdb快照文件。</p>
+<h5 id="bgsave的写时复制-cOW-机制"><a href="#bgsave的写时复制-cOW-机制" class="headerlink" title="bgsave的写时复制(cOW)机制"></a>bgsave的写时复制(cOW)机制</h5><p>Redis 借助操作系统提供的写时复制技术（Copy-On-Wite, COW)，在生成快照的同时，依然可以正常处理写命令。简单来说，<br>bgsave子进程是由主线程fork生成的，可以共享主线程的所有内存数据。bgsave子进程运行后，开始读取主线程的内存数据，并把它们写入RDB文件。此时，如果主线程对这些数据也都是读操作，那么，主线程和bgsave子进程相互不影响。但是，如果主线程要修改一块数据，那么，这块数据就会被复制一份，生成该数据的副本。然后，bgsave子进程会把这个副本数据写入RDB文件，而在这个过程中，主线程仍然可以直接修改原来的数据。</p>
+<h5 id="save与bgsave对比："><a href="#save与bgsave对比：" class="headerlink" title="save与bgsave对比："></a>save与bgsave对比：</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>save</th>
+<th align="left">bgsave</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IO类型</td>
+<td>同步</td>
+<td align="left">异步</td>
+</tr>
+<tr>
+<td>是否阻塞redis其他命令</td>
+<td>是</td>
+<td align="left">否(在生成子进程执行调用fork函数时会有短暂阻塞)</td>
+</tr>
+<tr>
+<td>复杂度</td>
+<td>O(n)</td>
+<td align="left">O(n)</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>不会消耗额外内存</td>
+<td align="left">不会阻塞客户端命令</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>阻塞客户端命令</td>
+<td align="left">需要fork子进程，消耗内存</td>
+</tr>
+</tbody></table>
+<h4 id="AOF-append-only-file"><a href="#AOF-append-only-file" class="headerlink" title="AOF (append-only file)"></a>AOF (append-only file)</h4><p>快照功能并不是非常耐久(durable):如果Redis 因为某些原因而造成故障停机，那么服务器将丢失最近写入、且仍未保存到快照中的那些数据。从1.1版本开始，Redis增加了一种完全耐久的持久化方式: AOF持久化，将修改的每一条指令记录进文件<br>appendonly.aof中(先写入os cache，每隔一段时间fsync到磁盘)<br>你可以通过修改配置文件来打开AOF功能:<br> #appendonly yes<br>从现在开始，每当Redis 执行一个改变数据集的命令时(比如SET)，这个命令就会被追加到AOF文件的末尾。</p>
+<p>这样的话，当Redis重新启动时，程序就可以通过重新执行AOF文件中的命令来达到重建数据集的目的。<br>你可以配置Redis多久才将数据fsync到磁盘一次。<br>有三个选项:</p>
+<ol>
+<li>appendfsync always:每次有新命令追加到 AOF文件时就执行一次 fsync ,非常慢，也非常安全</li>
+<li>appendfsync everysec:每秒 fsync一次，足够快，并且在故障时只会丢失1秒钟的数据。</li>
+<li>appendfsync no:从不 fsync ,将数据交给操作系统来处理。更快，也更不安全的选择。</li>
+</ol>
+<p>推荐（并且也是默认）的措施为每秒fsync一次，这种 fsync策略可以兼顾速度和安全性。</p>
+<h5 id="AOF重写"><a href="#AOF重写" class="headerlink" title="AOF重写"></a>AOF重写</h5><p>AOF文件里可能有太多没用指令，所以AOF会定期根据内存的最新数据生成aof文件例如，执行了如下几条命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; incr readcount</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; incr readcount</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; incr readcount</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; incr readcount</span><br><span class="line">(integer) 4</span><br><span class="line">127.0.0.1:6379&gt; incr readcount</span><br><span class="line">(integer) 5</span><br><span class="line">127.0.0.1:6379&gt; incr readcount</span><br><span class="line">(integer) 6</span><br></pre></td></tr></table></figure>
 
+<p>重写后AOF文件里变成</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*3</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">3</span></span><br><span class="line">SET</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">2</span></span><br><span class="line">readcount</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">1</span></span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+
+<p>如下两个配置可以控制AOF自动重写频率</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">auto-aof-rewrite-min-size 64mb //aof文件至少要达到64M才会自动重写，文件太小恢复速度本来就很快，重写的意义不大</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">auto-aof-rewrite-percentage 100 //aof文件自上一次重写后文件大小增长了100%则再次触发重</span></span><br></pre></td></tr></table></figure>
+
+<p>当然AOF还可以手动重写，进入redis客户端执行命令bgrewriteaof重写AOF<br>注意，AOF重写redis会fork出一个子进程去做(gyave命令类似)，不会对redis正常命令处理有太多影响</p>
+<p>RDB和AOF对比：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>RDB</th>
+<th>AOF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动优先级</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>恢复速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>数据安全性</td>
+<td>容易丢失数据</td>
+<td>根据策略决定</td>
+</tr>
+</tbody></table>
+<p>生产环境可以都启用，redis启动时如果既有rdb文件又有aof文件则优先选择aof文件恢复数据，因为aof一般来说数据更全一点。</p>
+<h4 id="Redis-4-0混合持久化"><a href="#Redis-4-0混合持久化" class="headerlink" title="Redis 4.0混合持久化"></a>Redis 4.0混合持久化</h4><p>重启Redis时，我们很少使用RDB来恢复内存状态，因为会丢失大量数据。我们通常使用AOF日志重放，但是重放AOF日志性能相对RDB来说要慢很多，这样在Redis 实例很大的情况下，启动需要花费很长的时间。Redis 4.0为了解决这个问题，带来了一个新的持久化选项——混合持久化。<br>通过如下配置可以开启混合持久化(必须先开启aof):</p>
+<p>#aof-use-rdb-preamble yes</p>
+<p>如果开启了混合持久化，AOF在重写时，不再是单纯将内存数据转换为RESP命令写入AOF文件，而是将重写这一刻之前的内存做RDB快照处理，并且将RDB快照内容和增量的AOF修改内存数据的命令存在一起，都写入新的AOF文件，新的文件一开始不叫 appendonly.aof，等到重写完新的AOF文件才会进行改名，覆盖原有的AOF文件，完成新旧两个AOF文件的替换。<br>于是在Redis重启的时候，可以先加载RDB的内容，然后再重放增量AOF日志就可以完全替代之前的AOF全量文件重放，因此重启效率大幅得到提升。<br>混合持久化AOF文件结构如下</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../img/appendonly.png"></p>
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>License</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
