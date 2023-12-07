@@ -80,7 +80,7 @@
 
 
 <div class="widgets">
-<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">沒有找到內容！</div></div></div></widget>
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
 
 
 <widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Redis</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Redis%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">一、Redis单线程与多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Redis%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">二、Redis快的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Redis%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AD%98%E5%82%A8%E7%9A%84"><span class="toc-text">三、Redis底层数据是如何用跳表来存储的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Redis-Key%E8%BF%87%E6%9C%9F%E4%BA%86%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%85%E5%AD%98%E6%B2%A1%E9%87%8A%E6%94%BE"><span class="toc-text">四、Redis Key过期了为什么内存没释放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81Redis-Key%E6%B2%A1%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A2%ABRedis%E4%B8%BB%E5%8A%A8%E5%88%A0%E9%99%A4%E4%BA%86"><span class="toc-text">五、Redis Key没设置过期时间为什么被Redis主动删除了</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BD%93Redis%E5%B7%B2%E7%94%A8%E5%86%85%E5%AD%98%E8%B6%85%E8%BF%87maxmemory%E9%99%90%E5%AE%9A%E6%97%B6%EF%BC%8C%E8%A7%A6%E5%8F%91%E4%B8%BB%E5%8A%A8%E6%B8%85%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-text">当Redis已用内存超过maxmemory限定时，触发主动清理策略</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Redis%E6%B7%98%E6%B1%B0Key%E7%9A%84%E7%AE%97%E6%B3%95LRU%E4%B8%8ELFU%E5%8C%BA%E5%88%AB"><span class="toc-text">Redis淘汰Key的算法LRU与LFU区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81Redis%E4%B8%BB%E4%BB%8E%E3%80%81%E5%93%A8%E5%85%B5%E3%80%81%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%AF%94%E8%BE%83"><span class="toc-text">六、Redis主从、哨兵、集群架构优缺点比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81Redis%E9%9B%86%E7%BE%A4%E6%95%B0%E6%8D%AEhash%E5%88%86%E7%89%87%E7%AE%97%E6%B3%95"><span class="toc-text">七、Redis集群数据hash分片算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A7%BD%E4%BD%8D%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95"><span class="toc-text">槽位定位算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81Redis%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%9C%89%E6%AD%BB%E5%BE%AA%E7%8E%AF%E9%98%BB%E5%A1%9EBug"><span class="toc-text">八、Redis执行命令有死循环阻塞Bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%EF%BC%8CRedis%E4%B8%BB%E4%BB%8E%E5%88%87%E6%8D%A2%E5%AF%BC%E8%87%B4%E4%BA%86%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-text">九、一次线上事故，Redis主从切换导致了缓存雪崩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E3%80%81Redis%E6%8C%81%E4%B9%85%E5%8C%96RDB%E3%80%81AOF%E3%80%81%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">十、Redis持久化RDB、AOF、混合持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB%E5%BF%AB%E7%85%A7-snapshot"><span class="toc-text">RDB快照(snapshot)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bgsave%E7%9A%84%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6-cOW-%E6%9C%BA%E5%88%B6"><span class="toc-text">bgsave的写时复制(cOW)机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#save%E4%B8%8Ebgsave%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-text">save与bgsave对比：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOF-append-only-file"><span class="toc-text">AOF (append-only file)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AOF%E9%87%8D%E5%86%99"><span class="toc-text">AOF重写</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-4-0%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">Redis 4.0混合持久化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81Redis%E7%BA%BF%E4%B8%8A%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E5%A4%87%E4%BB%BD"><span class="toc-text">十一、Redis线上数据如何备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E9%A3%8E%E6%9A%B4"><span class="toc-text">十二、Redis主从复制风暴</span></a></li></ol></div></div></widget>
@@ -99,7 +99,7 @@
 
 
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">首頁</a><span class="sep"></span><a class="cap breadcrumb" href="/">網誌</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Redis/">Redis</a></div><div id="post-meta">發布於&nbsp;<time datetime="2023-04-06T04:55:05.361Z">2023-04-06</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Redis/">Redis</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2023-04-06T04:55:05.361Z">2023-04-06</time></div></div>
 
 <article class='md-text content post'>
 <h1 class="article-title"><span>Redis</span></h1>
@@ -245,12 +245,12 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../img/fzfb.png"></p>
 
 
-<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>授權條款</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>License</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div></section></div>
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">較新文章</div><a href="/2023/04/13/Mysql/">Mysql</a></div><div class="item" id="next"><div class="note">較早文章</div><a href="/2023/03/31/SpringBoot/">SpringBoot</a></div></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2023/04/13/Mysql/">Mysql</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2023/03/31/SpringBoot/">SpringBoot</a></div></section></div>
 
 
 
@@ -259,7 +259,7 @@
 
   <div class='related-wrap md-text reveal' id="comments">
     <section class='header cmt-title cap theme'>
-      參與討論
+      Join the discussion
     </section>
     <section class='body cmt-body beaudar'>
       
@@ -385,11 +385,11 @@
   stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
   stellar.config = {
     date_suffix: {
-      just: '剛剛',
-      min: '分鐘前',
-      hour: '小時前',
-      day: '天前',
-      month: '個月前',
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
     },
     root : '/',
   };
